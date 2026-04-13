@@ -1,17 +1,55 @@
+"use client";
+
 import Link from 'next/link';
+import { useState } from 'react';
 
 export default function Navbar() {
+  const [open, setOpen] = useState(false);
+
   return (
-    <nav className="flex items-center justify-between px-8 py-10 max-w-[1400px] mx-auto w-full">
-      <Link href="/" className="text-2xl font-heading font-bold tracking-tighter uppercase leading-none border-l-2 border-brand-red pl-4">
-        Shree <br /> Venkateshwara
+    <nav className="relative flex items-center justify-between px-8 py-6 max-w-[1400px] mx-auto w-full">
+      <Link href="/" className="flex items-center gap-4">
+        <img src="/SVV_Logo-removebg-preview (1).png" alt="Shree Venkateshwara Ventures" className="h-10 md:h-14 object-contain" />
+        <span className="sr-only">Home</span>
       </Link>
+
+      {/* Desktop links */}
       <div className="hidden md:flex gap-12 text-[10px] font-bold uppercase tracking-[0.2em] text-brand-dark-grey">
         <Link href="/portfolio" className="hover:text-black transition-colors">Portfolio</Link>
         <Link href="/brand" className="hover:text-black transition-colors">The Brand</Link>
         <Link href="/concierge" className="hover:text-black transition-colors">Concierge</Link>
         <Link href="/enquire" className="hover:text-black transition-colors border-b border-black pb-1">Enquire</Link>
       </div>
+
+      {/* Mobile hamburger */}
+      <button
+        aria-label="Toggle menu"
+        aria-expanded={open}
+        onClick={() => setOpen(!open)}
+        className="md:hidden inline-flex items-center justify-center p-2 rounded focus:outline-none"
+      >
+        {open ? (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        ) : (
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        )}
+      </button>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white shadow-md z-50">
+          <div className="flex flex-col gap-4 p-6">
+            <Link href="/portfolio" onClick={() => setOpen(false)} className="font-bold uppercase tracking-widest">Portfolio</Link>
+            <Link href="/brand" onClick={() => setOpen(false)} className="font-bold uppercase tracking-widest">The Brand</Link>
+            <Link href="/concierge" onClick={() => setOpen(false)} className="font-bold uppercase tracking-widest">Concierge</Link>
+            <Link href="/enquire" onClick={() => setOpen(false)} className="font-bold uppercase tracking-widest border-t pt-4">Enquire</Link>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
