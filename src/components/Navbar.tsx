@@ -9,7 +9,15 @@ export default function Navbar() {
   return (
     <nav className="relative flex items-center justify-between px-8 py-6 max-w-[1400px] mx-auto w-full">
       <Link href="/" className="flex items-center gap-4">
-        <img src="/SVV_Logo-removebg-preview (1).png" alt="Shree Venkateshwara Ventures" className="h-10 md:h-14 object-contain" />
+        <video 
+          src="/logo.mp4" 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="h-10 md:h-15 object-contain"
+          poster="/SVV_Logo-removebg-preview (1).png"
+        />
         <span className="sr-only">Home</span>
       </Link>
 

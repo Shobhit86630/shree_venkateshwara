@@ -63,6 +63,46 @@ export default function Brand() {
             </div>
           </div>
         </section>
+        <section className="px-8 py-32 max-w-[1400px] mx-auto border-t border-zinc-100">
+          <div className="mb-20">
+            <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tighter uppercase leading-none mb-4">
+              The Visionaries
+            </h2>
+            <div className="w-20 h-1 bg-brand-red"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
+            <div className="group">
+              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey grayscale group-hover:grayscale-0 transition-all duration-700 mb-8">
+                <Image 
+                  src="/founder-sandeep.jpg" 
+                  alt="Sandeep Pendke" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-2">Sandeep Pendke</h3>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-brand-red mb-4">Founder & Managing Director</p>
+              <p className="text-[12px] font-medium uppercase tracking-widest text-brand-dark-grey leading-relaxed max-w-md">
+                Add founder biography here. Describe their vision, experience, and the philosophy they bring to Shree Venkateshwara.
+              </p>
+            </div>
+            <div className="group">
+              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey grayscale group-hover:grayscale-0 transition-all duration-700 mb-8">
+                <Image 
+                  src="/founder-raakesh.jpg" 
+                  alt="Raakesh Singh" 
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-2">Raakesh Singh</h3>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-brand-red mb-4">Co-Founder & Director</p>
+              <p className="text-[12px] font-medium uppercase tracking-widest text-brand-dark-grey leading-relaxed max-w-md">
+                Add founder biography here. Describe their vision, experience, and the philosophy they bring to Shree Venkateshwara.
+              </p>
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
