@@ -7,12 +7,12 @@ export default function Brand() {
     <div className="flex flex-col min-h-screen bg-white text-black font-sans">
       <Navbar />
       <main className="flex-1">
-        <section className="px-8 py-20 max-w-[1400px] mx-auto">
+        <section className="px-2 md:px-5 py-20 max-w-[1400px] mx-auto">
           <h1 className="text-6xl md:text-[8rem] font-heading font-bold tracking-tighter uppercase leading-[0.9] mb-16">
             The Legacy <br /> of Trust
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div className="relative aspect-[3/4] overflow-hidden bg-brand-grey grayscale">
+            <div className="relative aspect-[3/4] overflow-hidden bg-brand-grey">
               <Image 
                 src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" 
                 alt="Architecture" 
@@ -41,7 +41,7 @@ export default function Brand() {
           </div>
         </section>
 
-        <section className="px-8 py-32 bg-zinc-50">
+        <section className="px-2 md:px-5 py-32 bg-zinc-50">
           <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
             <div className="p-10 bg-white border border-zinc-100">
               <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-6">Innovation</h3>
@@ -63,7 +63,7 @@ export default function Brand() {
             </div>
           </div>
         </section>
-        <section className="px-8 py-32 max-w-[1400px] mx-auto border-t border-zinc-100">
+        <section className="px-2 md:px-5 py-32 max-w-[1400px] mx-auto border-t border-zinc-100">
           <div className="mb-20">
             <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tighter uppercase leading-none mb-4">
               The Visionaries
@@ -72,7 +72,7 @@ export default function Brand() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
             <div className="group">
-              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey grayscale group-hover:grayscale-0 transition-all duration-700 mb-8">
+              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey transition-all duration-700 mb-8">
                 <Image 
                   src="/founder-sandeep.jpg" 
                   alt="Sandeep Pendke" 
@@ -87,7 +87,7 @@ export default function Brand() {
               </p>
             </div>
             <div className="group">
-              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey grayscale group-hover:grayscale-0 transition-all duration-700 mb-8">
+              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey transition-all duration-700 mb-8">
                 <Image 
                   src="/founder-raakesh.jpg" 
                   alt="Raakesh Singh" 

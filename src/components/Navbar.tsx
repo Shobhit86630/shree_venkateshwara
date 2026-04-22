@@ -7,7 +7,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="relative flex items-center justify-between px-8 py-6 max-w-[1400px] mx-auto w-full">
+    <nav className="relative flex items-center justify-between px-2 md:px-5 py-6 max-w-[1400px] mx-auto w-full">
       <Link href="/" className="flex items-center gap-4">
         <video 
           src="/logo.mp4" 
