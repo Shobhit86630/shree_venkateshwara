@@ -83,7 +83,7 @@ export default function Brand() {
               <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-2">Sandeep Pendke</h3>
               <p className="text-[10px] font-bold uppercase tracking-widest text-brand-red mb-4">Founder & Managing Director</p>
               <p className="text-[12px] font-medium uppercase tracking-widest text-brand-dark-grey leading-relaxed max-w-md">
-                Add founder biography here. Describe their vision, experience, and the philosophy they bring to Shree Venkateshwara.
+                A visionary in Nagpur&apos;s architectural landscape, Sandeep Pendke founded Shree Venkateshwara with a commitment to uncompromising quality and structural honesty. With over 15 years of experience, he leads the brand&apos;s mission to redefine 3BHK luxury through modern minimalist design.
               </p>
             </div>
             <div className="group">
@@ -98,7 +98,7 @@ export default function Brand() {
               <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-2">Raakesh Singh</h3>
               <p className="text-[10px] font-bold uppercase tracking-widest text-brand-red mb-4">Co-Founder & Director</p>
               <p className="text-[12px] font-medium uppercase tracking-widest text-brand-dark-grey leading-relaxed max-w-md">
-                Add founder biography here. Describe their vision, experience, and the philosophy they bring to Shree Venkateshwara.
+                Raakesh Singh brings strategic depth and a customer-centric philosophy to the brand. His focus on transparency and architectural integrity ensures that every project, from K-50 to Metroflax Estet, serves as a true sanctuary for the families who call them home.
               </p>
             </div>
           </div>

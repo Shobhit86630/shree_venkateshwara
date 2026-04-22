@@ -1,52 +1,106 @@
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ProjectSlider from "@/components/ProjectSlider";
 
 export default function Portfolio() {
-  const properties = [
-    { title: "The Obsidian Estate", price: "$1.2M", loc: "Mumbai", img: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00" },
-    { title: "Azure Heights", price: "$2.4M", loc: "Pune", img: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750" },
-    { title: "Ivory Sanctuary", price: "$3.5M", loc: "Goa", img: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6" },
-    { title: "The Onyx Villa", price: "$1.8M", loc: "Bengaluru", img: "https://images.unsplash.com/photo-1513584684374-8bdb74838a0f" },
-    { title: "Marble Manor", price: "$4.1M", loc: "Hyderabad", img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c" },
-    { title: "Zenith Residencies", price: "$5.0M", loc: "Chennai", img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d" },
+  const completedProjects = [
+    {
+      name: "Metroflax Estet",
+      loc: "Besa, Nagpur",
+      images: [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=1600&q=80"
+      ],
+      desc: "An architectural landmark in Besa, featuring expansive 3BHK residences with high-end finishes and modern structural elegance."
+    },
+    {
+      name: "Tropicana",
+      loc: "Hingna, Nagpur",
+      images: [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1600&q=80"
+      ],
+      desc: "Resort-style living in Hingna. Tropicana emphasizes open spaces and lush landscape integration for a tranquil urban sanctuary."
+    },
+    {
+      name: "Shriramm Apartment",
+      loc: "Surendranagar, Nagpur",
+      images: [
+        "/image copy 5.png",
+        "/image copy 6.png",
+        
+      ],
+      desc: "Premium boutique housing in the heart of Surendranagar, defined by clean lines and architectural integrity."
+    }
   ];
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-black font-sans">
+    <div className="flex flex-col min-h-screen bg-white text-black font-sans selection:bg-brand-red selection:text-white">
       <Navbar />
-      <main className="flex-1 px-8 py-20 max-w-[1400px] mx-auto w-full">
-        <header className="mb-24">
-          <h1 className="text-6xl md:text-8xl font-heading font-bold tracking-tighter uppercase leading-[0.9] mb-8">
-            Curated <br /> Portfolio
+      
+      <main className="flex-1">
+        {/* Header Section */}
+        <section className="px-2 md:px-5 py-20 md:py-32 max-w-[1400px] mx-auto">
+          <h1 className="text-6xl md:text-[8rem] font-heading font-bold tracking-tighter uppercase leading-[0.9] mb-12">
+            The Living <br /> Portfolio
           </h1>
-          <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-brand-dark-grey max-w-sm">
-            Discover our collection of ultra-luxury residential properties across India&apos;s most sought-after locations.
-          </p>
-        </header>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
-          {properties.map((prop, i) => (
-            <div key={i} className="group cursor-pointer">
-              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey mb-8 grayscale group-hover:grayscale-0 transition-all duration-700">
-                <Image 
-                  src={`${prop.img}?auto=format&fit=crop&w=800&q=80`}
-                  alt={prop.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-1000"
-                />
-              </div>
-              <div className="border-l-2 border-zinc-100 pl-6">
-                <div className="flex justify-between items-end mb-2">
-                  <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter leading-none">{prop.title}</h3>
-                  <span className="text-lg font-heading font-bold">{prop.price}</span>
-                </div>
-                <p className="text-[10px] uppercase font-bold text-brand-dark-grey tracking-widest">{prop.loc} • Residential</p>
-              </div>
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8 border-t border-zinc-100 pt-12">
+            <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-brand-dark-grey max-w-sm">
+              Explore our legacy of 100+ completed projects—where architectural honesty meets modern luxury.
+            </p>
+            <div className="flex items-center gap-6">
+              <div className="h-[1px] w-12 bg-zinc-200"></div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-dark-grey underline underline-offset-8">Filter by Location</span>
             </div>
+          </div>
+        </section>
+
+        {/* Projects List */}
+        <div className="flex flex-col">
+          {completedProjects.map((project, i) => (
+            <section key={i} className="px-2 md:px-5 py-24 md:py-40 border-t border-zinc-100 first:border-none">
+              <div className="max-w-[1400px] mx-auto overflow-visible">
+                <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8">
+                  <div>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-4 block">Completed Project 0{i+1}</span>
+                    <h2 className="text-4xl md:text-7xl font-heading font-bold tracking-tighter uppercase leading-[0.9]">
+                      {project.name.split(' ').map((word, idx) => (
+                        <span key={idx}>{word} <br className="hidden md:block" /></span>
+                      ))}
+                    </h2>
+                  </div>
+                  <div className="text-[10px] font-bold uppercase tracking-[0.2em] border-b border-black pb-2">{project.loc}</div>
+                </div>
+
+                <ProjectSlider images={project.images} />
+
+                <div className="flex flex-col md:flex-row justify-between items-start gap-8 md:gap-24 mt-12 md:mt-20">
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-brand-red">Verified Luxury Residence</p>
+                  <p className="max-w-2xl text-base md:text-lg font-medium uppercase tracking-widest text-brand-dark-grey leading-relaxed">
+                    {project.desc}
+                  </p>
+                </div>
+              </div>
+            </section>
           ))}
         </div>
+
+        {/* Legacy CTA */}
+        <section className="px-2 md:px-5 py-32 bg-zinc-50 border-t border-zinc-100">
+          <div className="max-w-[1400px] mx-auto text-center">
+            <h2 className="text-4xl md:text-6xl font-heading font-bold uppercase tracking-tighter leading-none mb-12">
+              Join the Legacy.
+            </h2>
+            <a href="/enquire" className="inline-block px-12 py-6 bg-black text-white text-[12px] font-bold uppercase tracking-[0.4em] hover:bg-brand-red transition-colors duration-500">
+              Inquire Now
+            </a>
+          </div>
+        </section>
       </main>
+
       <Footer />
     </div>
   );
