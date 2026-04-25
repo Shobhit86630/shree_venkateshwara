@@ -6,37 +6,52 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen bg-white text-black font-sans selection:bg-brand-red selection:text-white">
       <Navbar />
-      <main className="flex-1 px-2 md:px-5 py-20 md:py-32 max-w-[1400px] mx-auto w-full">
-        <h1 className="text-6xl md:text-8xl font-heading font-bold tracking-tighter uppercase leading-[0.9] mb-12">
-          Get In <br /> Touch.
-        </h1>
+      <main className="flex-1 px-2 md:px-5 py-24 md:py-48 max-w-[1400px] mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 md:gap-24 items-start">
+          
+          <div className="lg:col-span-12 xl:col-span-5">
+            <h1 className="text-6xl md:text-8xl font-heading font-bold tracking-tighter uppercase leading-[0.9] mb-16">
+              Connect <br /> with SV.
+            </h1>
+            
+            <div className="space-y-20">
+              <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-brand-dark-grey leading-relaxed max-w-sm">
+                Whether you&apos;re looking for a new residence in Nagpur or seeking an architectural partnership, we are ready to assist.
+              </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-start">
-          <div className="space-y-12">
-            <p className="text-sm font-medium uppercase tracking-widest text-brand-dark-grey leading-loose max-w-sm">
-              For sales, enquiries, or project collaborations regarding our Nagpur portfolio, reach out to our team.
-            </p>
+              <div className="space-y-12">
+                <div className="border-l-2 border-brand-red pl-8">
+                  <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-brand-red mb-4">The Office</h3>
+                  <p className="text-2xl font-heading font-bold uppercase tracking-tight leading-snug">
+                    15, 2nd Floor, NKY Tower, <br /> 
+                    Ajni Square, Wardha Road, <br /> 
+                    Nagpur - 440015
+                  </p>
+                </div>
 
-            <div className="p-8 md:p-12 bg-zinc-50 border border-zinc-100">
-              <h3 className="text-2xl font-heading font-bold uppercase tracking-tight mb-8">Nagpur Office</h3>
-              <div className="space-y-6 text-[11px] font-bold uppercase tracking-widest text-zinc-600">
-                <div>
-                    <span className="block text-brand-red mb-1">Address</span>
-                    <p className="text-black">15, 2nd Floor, NKY Tower, <br /> Ajni Square, Wardha Road, <br /> Nagpur - 440015</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pl-8">
+                  <div>
+                    <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-4">Call</h3>
+                    <p className="text-sm font-bold tracking-widest">+91 9145669964</p>
+                    <p className="text-sm font-bold tracking-widest">+91 9850815881</p>
+                  </div>
+                  <div>
+                    <h3 className="text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-4">Write</h3>
+                    <a href="mailto:venturesshreevenkateshwara@gmail.com" className="text-sm font-bold tracking-widest underline break-words block">venturesshreevenkateshwara@gmail.com</a>
+                  </div>
                 </div>
-                <div>
-                    <span className="block text-brand-red mb-1">Phones</span>
-                    <p className="text-black">+91 9145669964 <br /> +91 9850815881</p>
-                </div>
-                <div>
-                    <span className="block text-brand-red mb-1">Email</span>
-                    <p className="text-black underline">venturesshreevenkateshwara@gmail.com</p>
-                </div>
+              </div>
+
+              <div className="pl-8 pt-12 border-t border-zinc-100 flex gap-8">
+                <a href="#" className="text-[10px] font-bold uppercase tracking-[0.4em] hover:text-brand-red transition-colors">Instagram</a>
+                <a href="#" className="text-[10px] font-bold uppercase tracking-[0.4em] hover:text-brand-red transition-colors">LinkedIn</a>
               </div>
             </div>
           </div>
 
-          <div className="pt-4">
+          <div className="lg:col-span-1 xl:block hidden border-r border-zinc-100 h-full min-h-[500px]"></div>
+
+          <div className="lg:col-span-12 xl:col-span-6 lg:pt-0 pt-16">
             <ContactForm />
           </div>
         </div>

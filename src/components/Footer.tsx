@@ -9,10 +9,9 @@ export default function Footer() {
               <video 
                 src="/logo.mp4" 
                 autoPlay 
-                loop 
                 muted 
                 playsInline 
-                className="h-10 md:h-18 object-contain"
+                className="h-16 md:h-28 object-contain mix-blend-multiply"
                 poster="/SVV_Logo-removebg-preview (1).png"
               />
             </div>
@@ -25,9 +24,9 @@ export default function Footer() {
           <div className="col-span-1">
             <h5 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 text-zinc-400">Navigation</h5>
             <div className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">
-              <a href="/portfolio" className="hover:text-black transition-colors">Portfolio</a>
-              <a href="/concierge" className="hover:text-black transition-colors">Concierge</a>
-              <a href="/brand" className="hover:text-black transition-colors">The Brand</a>
+              <a href="/portfolio" className="hover:text-black transition-colors">Projects</a>
+              <a href="/concierge" className="hover:text-black transition-colors">Services</a>
+              <a href="/brand" className="hover:text-black transition-colors">About</a>
             </div>
           </div>
           

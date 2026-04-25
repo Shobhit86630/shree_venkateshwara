@@ -1,8 +1,28 @@
+"use client";
+
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useState, useEffect } from "react";
 
 export default function Brand() {
+  const images = [
+    "/image copy 4.png",
+    "/image copy 2.png",
+    "/image copy 3.png",
+    "/image copy 5.png",
+    "/image copy 6.png",
+    "/image.png"
+  ];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 4000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
   return (
     <div className="flex flex-col min-h-screen bg-white text-black font-sans">
       <Navbar />
@@ -12,13 +32,20 @@ export default function Brand() {
             The Legacy <br /> of Trust
           </h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-            <div className="relative aspect-[3/4] overflow-hidden bg-brand-grey">
-              <Image 
-                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" 
-                alt="Architecture" 
-                fill
-                className="object-cover"
-              />
+            <div className="relative aspect-[4/3] overflow-hidden bg-brand-grey">
+              {images.map((src, idx) => (
+                <div 
+                  key={src}
+                  className={`absolute inset-0 transition-opacity duration-1000 ${idx === currentIndex ? 'opacity-100' : 'opacity-0'}`}
+                >
+                  <Image 
+                    src={src} 
+                    alt={`SV Branded Architecture ${idx + 1}`} 
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              ))}
             </div>
             <div className="flex flex-col gap-12">
               <h2 className="text-4xl md:text-6xl font-heading font-bold uppercase tracking-tighter leading-none">
@@ -66,7 +93,7 @@ export default function Brand() {
         <section className="px-2 md:px-5 py-32 max-w-[1400px] mx-auto border-t border-zinc-100">
           <div className="mb-20">
             <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tighter uppercase leading-none mb-4">
-              The Visionaries
+              The Founders
             </h2>
             <div className="w-20 h-1 bg-brand-red"></div>
           </div>
@@ -74,7 +101,7 @@ export default function Brand() {
             <div className="group">
               <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey transition-all duration-700 mb-8">
                 <Image 
-                  src="/founder-sandeep.jpg" 
+                  src="/Sandeep Pendke.png" 
                   alt="Sandeep Pendke" 
                   fill
                   className="object-cover"
@@ -89,7 +116,7 @@ export default function Brand() {
             <div className="group">
               <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey transition-all duration-700 mb-8">
                 <Image 
-                  src="/founder-raakesh.jpg" 
+                  src="/Raakesh Singh.png" 
                   alt="Raakesh Singh" 
                   fill
                   className="object-cover"

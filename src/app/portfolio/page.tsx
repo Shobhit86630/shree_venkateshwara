@@ -5,6 +5,16 @@ import ProjectSlider from "@/components/ProjectSlider";
 
 export default function Portfolio() {
   const completedProjects = [
+        {
+      name: "Shriramm Apartment",
+      loc: "Surendranagar, Nagpur",
+      images: [
+        "/image copy 5.png",
+        "/image copy 6.png",
+        
+      ],
+      desc: "Premium boutique housing in the heart of Surendranagar, defined by clean lines and architectural integrity."
+    },
     {
       name: "Metroflax Estet",
       loc: "Besa, Nagpur",
@@ -25,16 +35,7 @@ export default function Portfolio() {
       ],
       desc: "Resort-style living in Hingna. Tropicana emphasizes open spaces and lush landscape integration for a tranquil urban sanctuary."
     },
-    {
-      name: "Shriramm Apartment",
-      loc: "Surendranagar, Nagpur",
-      images: [
-        "/image copy 5.png",
-        "/image copy 6.png",
-        
-      ],
-      desc: "Premium boutique housing in the heart of Surendranagar, defined by clean lines and architectural integrity."
-    }
+
   ];
 
   return (

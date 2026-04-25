@@ -78,30 +78,56 @@ export default function Home() {
             </div>
         </section>
 
-        {/* Upcoming Projects */}
-        <section className="px-2 md:px-5 py-20 md:py-40 border-t border-zinc-100">
+        {/* The Govindam Series (Upcoming) */}
+        <section className="px-3 md:px-5 py-24 md:py-56 border-t border-zinc-100 bg-white">
           <div className="max-w-[1400px] mx-auto">
-            <div className="mb-16 md:mb-24">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-4 block">The Future</span>
-              <h2 className="text-4xl md:text-7xl font-heading font-bold tracking-tighter uppercase leading-[0.9]">
-                Upcoming <br /> Transitions
-              </h2>
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-20 md:mb-32 gap-12 md:gap-24">
+              <div className="max-w-2xl">
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-6 md:mb-8 block font-sans">Strategic Expansion</span>
+                <h2 className="text-4xl md:text-[6rem] font-heading font-bold tracking-tighter uppercase leading-[1.05] md:leading-[1] mb-10 md:mb-12">
+                  The Govindam <br /> Collection.
+                </h2>
+                <p className="text-[13px] md:text-sm font-medium uppercase tracking-widest md:tracking-[0.2em] text-brand-dark-grey max-w-md leading-relaxed md:leading-loose">
+                  Our upcoming signature series represents the evolution of luxury in Nagpur. Each Govindam project is a curated architectural statement, built on the legacy of trust.
+                </p>
+              </div>
+              <div className="relative group self-start lg:self-center">
+                <div className="absolute -inset-4 bg-zinc-50 scale-x-0 group-hover:scale-x-100 transition-transform origin-right duration-700 -z-10"></div>
+                <Image 
+                  src="/Govindam.png" 
+                  alt="Govindam 72 Logo" 
+                  width={400}
+                  height={200}
+                  style={{ clipPath: 'inset(2% 2% 2% 2%)' }}
+                  className="w-48 md:w-96 object-contain mix-blend-multiply opacity-80 md:opacity-100 transition-all md:mb-20 -ml-4 duration-700"
+                />
+                <div className="mt-4 text-[8px] font-bold uppercase tracking-[0.4em] text-brand-red text-left lg:text-right">Authentic Series Mark</div>
+              </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-1px md:bg-zinc-100">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-zinc-100 border-y border-zinc-100">
               {[
-                { name: "Govindam Pande Layout", loc: "West Nagpur" },
-                { name: "Govindam II Lakshmi Nagar", loc: "Prime Residential" },
-                { name: "Narendar Nagar", loc: "South Nagpur" }
+                { name: "Pande Layout", series: "Series I", loc: "West Nagpur", type: "Elite Boutique" },
+                { name: "Lakshmi Nagar", series: "Series II", loc: "Prime Residential", type: "Luxury 3BHK" },
+                { name: "Govindam III", series: "Series III", loc: "Nagpur", type: "Bespoke Residences" }
               ].map((project, i) => (
-                <div key={i} className="bg-white p-8 md:p-12 hover:bg-zinc-50 transition-colors group md:border-none border border-zinc-100">
-                  <div className="text-brand-red text-xs font-bold mb-8 md:mb-12">0{i+1} —</div>
-                  <h4 className="text-2xl md:text-3xl font-heading font-bold uppercase tracking-tighter mb-6 md:mb-8 leading-none group-hover:text-brand-red transition-colors min-h-[2.5em] md:min-h-0">
-                    {project.name}
-                  </h4>
-                  <div className="flex items-center gap-4 text-[9px] font-bold uppercase tracking-[0.3em] text-zinc-600">
-                    <span className="w-2 h-2 bg-brand-red rounded-full animate-pulse"></span>
-                    {project.loc}
+                <div key={i} className="bg-white p-8 md:p-16 hover:bg-zinc-50 transition-all duration-500 group flex flex-col min-h-[320px] md:min-h-[450px]">
+                  <div className="flex justify-between items-start mb-16 md:mb-20">
+                    <span className="text-brand-red text-xs font-bold font-heading tracking-tighter">0{i+1}</span>
+                    <span className="text-[9px] md:text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 group-hover:text-black transition-colors">{project.series}</span>
+                  </div>
+                  
+                  <div className="mt-auto">
+                    <h3 className="text-2xl md:text-4xl font-heading font-bold uppercase tracking-tighter leading-none mb-4 md:mb-6 group-hover:translate-x-2 md:group-hover:translate-x-4 transition-transform duration-500">
+                      Govindam <br /> {project.name}
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="w-8 md:w-12 h-[1px] bg-zinc-100 group-hover:w-full group-hover:bg-brand-red transition-all duration-700"></div>
+                      <div className="flex justify-between items-center text-[9px] md:text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500">
+                        <span>{project.loc}</span>
+                        <span className="text-zinc-300 group-hover:text-brand-red transition-colors">{project.type}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -110,18 +136,18 @@ export default function Home() {
         </section>
 
         {/* Legacy Section */}
-        <section className="px-2 md:px-5 py-20 md:py-40 border-t border-zinc-100">
+        <section className="px-2 md:px-5 py-32 md:py-56 border-t border-zinc-100">
           <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-32">
             <div className="flex-1 order-2 md:order-1">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-6 md:mb-8 block">Our Legacy</span>
-              <h2 className="text-4xl md:text-[6rem] font-heading font-bold uppercase tracking-tighter leading-[0.85] mb-8 md:mb-12">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-8 md:mb-10 block">Our Legacy</span>
+              <h2 className="text-5xl md:text-[7.5rem] font-heading font-bold uppercase tracking-tighter leading-[1] mb-10 md:mb-16">
                 100+ <br className="hidden md:block" /> Projects. <br className="hidden md:block" /> Zero <br className="hidden md:block" /> Compromise.
               </h2>
               <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-dark-grey max-w-md leading-loose">
                 For over a decade, Shree Venkateshwara has been synonymous with trust in Nagpur. Each of our 100+ completed projects is a testament to our commitment to 3BHK luxury and architectural excellence.
               </p>
             </div>
-            <div className="flex-1 relative aspect-square w-full order-1 md:order-2 overflow-hidden mb-8 md:mb-0">
+            <div className="flex-1 relative aspect-[4/5] w-full order-1 md:order-2 overflow-hidden mb-8 md:mb-0">
               <Image 
                 src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80" 
                 alt="Architecture Detail" 

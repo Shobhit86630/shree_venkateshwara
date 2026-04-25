@@ -26,7 +26,7 @@ export default function Enquire() {
                   <span className="text-sm font-heading font-bold uppercase tracking-widest">venturesshreevenkateshwara@gmail.com</span>
                 </div>
                 <div>
-                  <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-2">Phone</span>
+                  <span className="block text-[10px] font-bold uppercase tracking-[0.3em] text-zinc-400 mb-2">Contact</span>
                   <span className="text-sm font-heading font-bold uppercase tracking-widest">+91 9145669964 / +91 9850815881</span>
                 </div>
               </div>
