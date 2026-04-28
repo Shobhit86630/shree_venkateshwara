@@ -11,7 +11,7 @@ const fadeInUp = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }
-};
+} as const;
 
 const stagger = {
   whileInView: {
@@ -19,7 +19,7 @@ const stagger = {
       staggerChildren: 0.1
     }
   }
-};
+} as const;
 
 export default function Brand() {
   const images = [
@@ -55,7 +55,7 @@ export default function Brand() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
+              transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] as const }}
               className="relative aspect-[4/3] overflow-hidden bg-brand-grey"
             >
               {images.map((src, idx) => (

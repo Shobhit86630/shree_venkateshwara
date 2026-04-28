@@ -10,7 +10,7 @@ const fadeInUp = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true },
   transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }
-};
+} as const;
 
 const stagger = {
   whileInView: {
@@ -18,7 +18,7 @@ const stagger = {
       staggerChildren: 0.1
     }
   }
-};
+} as const;
 
 export default function Concierge() {
   const services = [
