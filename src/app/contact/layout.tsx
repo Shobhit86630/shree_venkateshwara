@@ -3,13 +3,13 @@ import { buildPageMetadata } from "@/lib/seo";
 import { createBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata = buildPageMetadata({
-  title: "About the Builder",
+  title: "Contact the Builder",
   description:
-    "Learn about the legacy, leadership, and residential design values behind Shree Venkateshwara in Nagpur.",
-  path: "/brand",
+    "Contact Shree Venkateshwara for project details, office visits, and qualified residential inquiries in Nagpur.",
+  path: "/contact",
 });
 
-export default function BrandLayout({
+export default function ContactLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -17,10 +17,10 @@ export default function BrandLayout({
   return (
     <>
       <JsonLd
-        id="brand-breadcrumb-schema"
+        id="contact-breadcrumb-schema"
         data={createBreadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "About", path: "/brand" },
+          { name: "Contact", path: "/contact" },
         ])}
       />
       {children}

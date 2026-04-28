@@ -1,15 +1,29 @@
-import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
+import { buildPageMetadata } from "@/lib/seo";
+import { createBreadcrumbSchema } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: "Enquire Now | Contact Shree Venkateshwara Nagpur",
-  description: "Register your interest for upcoming 3BHK luxury residences in Nagpur or request a private viewing. Start your enquiry with Shree Venkateshwara.",
-  keywords: ["Contact Real Estate Nagpur", "Enquiry Luxury 3BHK", "Property Consultation Nagpur"],
-};
+export const metadata = buildPageMetadata({
+  title: "Book an Inquiry or Site Visit",
+  description:
+    "Submit a qualified inquiry for ready-to-move or under-construction flats in Nagpur and request a site visit.",
+  path: "/enquire",
+});
 
 export default function EnquireLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <>{children}</>;
+  return (
+    <>
+      <JsonLd
+        id="enquire-breadcrumb-schema"
+        data={createBreadcrumbSchema([
+          { name: "Home", path: "/" },
+          { name: "Enquire", path: "/enquire" },
+        ])}
+      />
+      {children}
+    </>
+  );
 }

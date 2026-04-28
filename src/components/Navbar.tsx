@@ -36,6 +36,7 @@ export default function Navbar() {
       >
         <Link href="/portfolio" className="relative hover:text-black transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[1.5px] after:w-full after:origin-right after:scale-x-0 after:bg-black after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100">Projects</Link>
         <Link href="/brand" className="relative hover:text-black transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[1.5px] after:w-full after:origin-right after:scale-x-0 after:bg-black after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100">About</Link>
+        <Link href="/blog" className="relative hover:text-black transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[1.5px] after:w-full after:origin-right after:scale-x-0 after:bg-black after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100">Insights</Link>
         <Link href="/concierge" className="relative hover:text-black transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[1.5px] after:w-full after:origin-right after:scale-x-0 after:bg-black after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100">Services</Link>
         <Link href="/enquire" className="relative text-black transition-colors after:absolute after:bottom-[-4px] after:left-0 after:h-[1.5px] after:w-full after:origin-right after:scale-x-0 after:bg-black after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100">Contact</Link>
       </motion.div>
@@ -71,6 +72,7 @@ export default function Navbar() {
             <div className="flex flex-col gap-8 p-10">
               <Link href="/portfolio" onClick={() => setOpen(false)} className="text-3xl font-heading font-bold uppercase tracking-tighter">Projects</Link>
               <Link href="/brand" onClick={() => setOpen(false)} className="text-3xl font-heading font-bold uppercase tracking-tighter">About</Link>
+              <Link href="/blog" onClick={() => setOpen(false)} className="text-3xl font-heading font-bold uppercase tracking-tighter">Insights</Link>
               <Link href="/concierge" onClick={() => setOpen(false)} className="text-3xl font-heading font-bold uppercase tracking-tighter">Services</Link>
               <Link href="/enquire" onClick={() => setOpen(false)} className="text-3xl font-heading font-bold uppercase tracking-tighter text-brand-red">Contact</Link>
             </div>

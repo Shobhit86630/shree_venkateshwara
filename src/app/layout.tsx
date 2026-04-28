@@ -1,5 +1,12 @@
-import type { Metadata } from "next";
 import { Outfit, Antonio } from "next/font/google";
+import JsonLd from "@/components/JsonLd";
+import { rootMetadata, rootViewport } from "@/lib/seo";
+import {
+  createLocalBusinessSchema,
+  createOrganizationSchema,
+  createWebSiteSchema,
+} from "@/lib/structured-data";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -12,34 +19,8 @@ const antonio = Antonio({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Shree Venkateshwara | Premium 3BHK Luxury Residences in Nagpur",
-    template: "%s | Shree Venkateshwara Nagpur"
-  },
-  description: "Nagpur's leading developer specializing in boutique 3BHK luxury residences. Explore premium apartments in Bharat Nagar, Lakshmi Nagar, and West Nagpur with Shree Venkateshwara.",
-  keywords: ["Nagpur Real Estate", "Luxury 3BHK Nagpur", "Premium Apartments Nagpur", "Boutique Residences Nagpur", "Real Estate Developers Nagpur", "Shree Venkateshwara", "Luxury Living Nagpur"],
-  authors: [{ name: "Shree Venkateshwara" }],
-  creator: "Shree Venkateshwara",
-  publisher: "Shree Venkateshwara",
-  openGraph: {
-    type: "website",
-    locale: "en_IN",
-    url: "https://shreevenkateshwara.com",
-    title: "Shree Venkateshwara | Premium 3BHK Luxury Residences in Nagpur",
-    description: "Nagpur's leading developer specializing in boutique 3BHK luxury residences. Architecture-led living since 1999.",
-    siteName: "Shree Venkateshwara Real Estate",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Shree Venkateshwara | Premium 3BHK Luxury Residences in Nagpur",
-    description: "Nagpur's leading developer specializing in boutique 3BHK luxury residences.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export const metadata = rootMetadata;
+export const viewport = rootViewport;
 
 export default function RootLayout({
   children,
@@ -48,10 +29,20 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang={siteConfig.language}
       className={`${outfit.variable} ${antonio.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <JsonLd
+          id="site-organization-schema"
+          data={[
+            createOrganizationSchema(),
+            createLocalBusinessSchema(),
+            createWebSiteSchema(),
+          ]}
+        />
+        {children}
+      </body>
     </html>
   );
 }

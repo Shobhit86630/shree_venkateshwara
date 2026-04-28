@@ -3,13 +3,13 @@ import { buildPageMetadata } from "@/lib/seo";
 import { createBreadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata = buildPageMetadata({
-  title: "About the Builder",
+  title: "Nagpur Real Estate Insights",
   description:
-    "Learn about the legacy, leadership, and residential design values behind Shree Venkateshwara in Nagpur.",
-  path: "/brand",
+    "Read location guides, buyer education, and market commentary focused on residential real estate in Nagpur.",
+  path: "/blog",
 });
 
-export default function BrandLayout({
+export default function BlogLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -17,10 +17,10 @@ export default function BrandLayout({
   return (
     <>
       <JsonLd
-        id="brand-breadcrumb-schema"
+        id="blog-breadcrumb-schema"
         data={createBreadcrumbSchema([
           { name: "Home", path: "/" },
-          { name: "About", path: "/brand" },
+          { name: "Insights", path: "/blog" },
         ])}
       />
       {children}

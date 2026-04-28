@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const fadeInUp = {
@@ -42,9 +43,10 @@ export default function Footer() {
           >
             <h5 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 text-zinc-400">Navigation</h5>
             <div className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">
-              <a href="/portfolio" className="hover:text-black transition-colors">Projects</a>
-              <a href="/concierge" className="hover:text-black transition-colors">Services</a>
-              <a href="/brand" className="hover:text-black transition-colors">About</a>
+              <Link href="/portfolio" className="hover:text-black transition-colors">Projects</Link>
+              <Link href="/concierge" className="hover:text-black transition-colors">Services</Link>
+              <Link href="/brand" className="hover:text-black transition-colors">About</Link>
+              <Link href="/blog" className="hover:text-black transition-colors">Insights</Link>
             </div>
           </motion.div>
           
@@ -79,8 +81,10 @@ export default function Footer() {
           >
             <h5 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 text-zinc-400">Legal</h5>
             <div className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">
-              <a href="/privacy" className="hover:text-black transition-colors">Privacy Policy</a>
-              <a href="/terms" className="hover:text-black transition-colors">Terms of Use</a>
+              <Link href="/privacy" className="hover:text-black transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="hover:text-black transition-colors">Terms of Use</Link>
+              <Link href="/html-sitemap" className="hover:text-black transition-colors">HTML Sitemap</Link>
+              <a href="/rss.xml" className="hover:text-black transition-colors">RSS Feed</a>
             </div>
           </motion.div>
         </div>

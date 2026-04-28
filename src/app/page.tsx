@@ -5,6 +5,9 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ProjectSlider from "@/components/ProjectSlider";
+import JsonLd from "@/components/JsonLd";
+import { homeFaqs } from "@/lib/site";
+import { createFaqSchema } from "@/lib/structured-data";
 import { motion } from "framer-motion";
 
 const fadeInUp = {
@@ -34,6 +37,7 @@ export default function Home() {
       <Navbar />
 
       <main className="flex-1">
+        <JsonLd id="home-faq-schema" data={createFaqSchema(homeFaqs)} />
         {/* Hero Section */}
         <section className="px-2 md:px-5 pb-12 md:pb-24 max-w-[1400px] mx-auto">
           <motion.div 
@@ -250,6 +254,38 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
+
+        <section className="px-2 md:px-5 py-20 md:py-28 border-t border-zinc-100">
+          <div className="max-w-[1400px] mx-auto">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-10 mb-14">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-4 block">
+                  Buyer Questions
+                </span>
+                <h2 className="text-4xl md:text-6xl font-heading font-bold uppercase tracking-tighter leading-[0.95]">
+                  Frequently Asked
+                </h2>
+              </div>
+              <p className="max-w-md text-[11px] font-bold uppercase tracking-[0.25em] text-brand-dark-grey leading-loose">
+                Clear answers for families evaluating locations, project stages, and
+                the best way to start a conversation with the builder team.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-zinc-100 border border-zinc-100">
+              {homeFaqs.map((faq) => (
+                <div key={faq.question} className="bg-white p-8 md:p-12">
+                  <h3 className="text-xl md:text-2xl font-heading font-bold uppercase tracking-tight mb-5">
+                    {faq.question}
+                  </h3>
+                  <p className="text-sm font-medium uppercase tracking-widest text-brand-dark-grey leading-loose">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
