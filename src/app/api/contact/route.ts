@@ -36,6 +36,42 @@ export async function POST(req: Request) {
 
     await transporter.sendMail(mailOptions);
 
+    // --- Auto-reply to User ---
+    const autoReplyOptions = {
+      from: `"Shree Venkateshwara" <${process.env.EMAIL_USER}>`,
+      to: email,
+      subject: "Thank you for your enquiry | Shree Venkateshwara",
+      html: `
+        <div style="font-family: sans-serif; padding: 30px; max-width: 600px; margin: auto; border: 1px solid #f0f0f0;">
+          <h1 style="font-size: 24px; color: #000; letter-spacing: -1px; text-transform: uppercase;">Thank you, ${name}.</h1>
+          <p style="color: #666; line-height: 1.6;">We have received your enquiry and our executive handlers will get back to you shortly regarding your interest.</p>
+          <hr style="border: 0; border-top: 1px solid #eee; margin: 30px 0;">
+          <p style="font-size: 12px; color: #999; text-transform: uppercase; letter-spacing: 2px;">Shree Venkateshwara Real Estate</p>
+          <p style="font-size: 11px; color: #999;">Nagpur, Maharashtra</p>
+        </div>
+      `,
+    };
+    
+    // Send auto-reply in background (don't await so main lead is faster)
+    transporter.sendMail(autoReplyOptions).catch(err => console.error("Auto-reply error:", err));
+    // -------------------------
+
+    // --- Google Sheets Integration ---
+    try {
+      const scriptURL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL;
+      if (scriptURL) {
+        await fetch(scriptURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, message }),
+        });
+      }
+    } catch (sheetError) {
+      console.error("Google Sheets Error:", sheetError);
+      // We don't fail the whole request if only the sheet fails
+    }
+    // ---------------------------------
+
     return NextResponse.json({ message: "Email sent successfully" }, { status: 200 });
   } catch (error) {
     console.error("Email error:", error);

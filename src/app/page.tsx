@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -245,16 +246,7 @@ export default function Home() {
               <p className="text-sm font-medium uppercase tracking-widest text-brand-dark-grey">
                 Register your interest for upcoming 3BHK residences or request a private viewing of K-50.
               </p>
-              <div className="flex border-b border-black pb-4">
-                <input 
-                  type="email" 
-                  placeholder="EMAIL ADDRESS" 
-                  className="flex-1 bg-transparent py-2 outline-none text-[10px] font-bold tracking-[0.3em] placeholder:text-black/20 w-full"
-                />
-                <button className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-brand-red transition-colors cursor-pointer shrink-0">
-                  Continue
-                </button>
-              </div>
+              <HomeLeadForm />
             </div>
           </div>
         </motion.section>
@@ -262,5 +254,54 @@ export default function Home() {
 
       <Footer />
     </div>
+  );
+}
+
+function HomeLeadForm() {
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: "Website Lead",
+          email: email,
+          message: "User registered interest via homepage transition form."
+        })
+      });
+      if (!res.ok) throw new Error();
+      setStatus("sent");
+      setEmail("");
+    } catch (err) {
+      setStatus("error");
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div className="flex border-b border-black pb-4">
+        <input 
+          required
+          type="email" 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="EMAIL ADDRESS" 
+          className="flex-1 bg-transparent py-2 outline-none text-[10px] font-bold tracking-[0.3em] placeholder:text-black/20 w-full"
+        />
+        <button 
+          disabled={status === "sending"}
+          className="text-[10px] font-bold uppercase tracking-[0.3em] hover:text-brand-red transition-colors cursor-pointer shrink-0 disabled:opacity-50"
+        >
+          {status === "sending" ? "Sending..." : "Continue"}
+        </button>
+      </div>
+      {status === "sent" && <p className="text-[10px] font-bold uppercase tracking-widest text-green-600">Interest registered successfully.</p>}
+      {status === "error" && <p className="text-[10px] font-bold uppercase tracking-widest text-brand-red">Error. Please try again.</p>}
+    </form>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
@@ -51,37 +52,105 @@ export default function Enquire() {
             transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1], delay: 0.2 }}
             className="bg-zinc-50 p-8 md:p-20"
           >
-            <form className="flex flex-col gap-12">
-              <div className="flex flex-col gap-4 border-b border-zinc-200 pb-4">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em]">Full Name</label>
-                <input type="text" className="bg-transparent outline-none text-xl font-heading font-bold uppercase tracking-tighter" placeholder="YOUR NAME" />
-              </div>
-              <div className="flex flex-col gap-4 border-b border-zinc-200 pb-4">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em]">Email Address</label>
-                <input type="email" className="bg-transparent outline-none text-xl font-heading font-bold uppercase tracking-tighter" placeholder="EMAIL@EXAMPLE.COM" />
-              </div>
-              <div className="flex flex-col gap-4 border-b border-zinc-200 pb-4">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em]">Project Interests</label>
-                <select className="bg-transparent outline-none text-sm font-bold uppercase tracking-widest appearance-none cursor-pointer">
-                    <option>K50 VYANKATESH APARTMENTS</option>
-                    <option>METROFLAX ESTET</option>
-                    <option>TROPICANA</option>
-                    <option>SHRIRAMM APARTMENT</option>
-                    <option>UPCOMING TRANSITIONS</option>
-                </select>
-              </div>
-              <div className="flex flex-col gap-4 border-b border-zinc-200 pb-4">
-                <label className="text-[10px] font-bold uppercase tracking-[0.3em]">Message</label>
-                <textarea className="bg-transparent outline-none text-sm font-bold uppercase tracking-widest min-h-[100px] resize-none" placeholder="HOW CAN WE ASSIST?"></textarea>
-              </div>
-              <button className="bg-black text-white py-6 px-12 text-xs font-bold uppercase tracking-[0.4em] hover:bg-brand-red transition-all cursor-pointer">
-                Send Enquiry
-              </button>
-            </form>
+            <EnquiryForm />
           </motion.div>
         </div>
       </main>
       <Footer />
     </div>
+  );
+}
+
+function EnquiryForm() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [interest, setInterest] = useState("K50 VYANKATESH APARTMENTS");
+  const [message, setMessage] = useState("");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ 
+          name, 
+          email, 
+          message: `Interest: ${interest}\n\n${message}` 
+        }),
+      });
+
+      if (!response.ok) throw new Error();
+      setStatus("sent");
+      setName("");
+      setEmail("");
+      setMessage("");
+    } catch (err) {
+      setStatus("error");
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-12">
+      <div className="flex flex-col gap-4 border-b border-zinc-200 pb-4">
+        <label className="text-[10px] font-bold uppercase tracking-[0.3em]">Full Name</label>
+        <input 
+          required
+          type="text" 
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="bg-transparent outline-none text-xl font-heading font-bold uppercase tracking-tighter" 
+          placeholder="YOUR NAME" 
+        />
+      </div>
+      <div className="flex flex-col gap-4 border-b border-zinc-200 pb-4">
+        <label className="text-[10px] font-bold uppercase tracking-[0.3em]">Email Address</label>
+        <input 
+          required
+          type="email" 
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="bg-transparent outline-none text-xl font-heading font-bold uppercase tracking-tighter" 
+          placeholder="EMAIL@EXAMPLE.COM" 
+        />
+      </div>
+      <div className="flex flex-col gap-4 border-b border-zinc-200 pb-4">
+        <label className="text-[10px] font-bold uppercase tracking-[0.3em]">Project Interests</label>
+        <select 
+          value={interest}
+          onChange={(e) => setInterest(e.target.value)}
+          className="bg-transparent outline-none text-sm font-bold uppercase tracking-widest appearance-none cursor-pointer"
+        >
+            <option>K50 VYANKATESH APARTMENTS</option>
+            <option>METROFLAX ESTET</option>
+            <option>TROPICANA</option>
+            <option>SHRIRAMM APARTMENT</option>
+            <option>UPCOMING TRANSITIONS</option>
+        </select>
+      </div>
+      <div className="flex flex-col gap-4 border-b border-zinc-200 pb-4">
+        <label className="text-[10px] font-bold uppercase tracking-[0.3em]">Message</label>
+        <textarea 
+          required
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          className="bg-transparent outline-none text-sm font-bold uppercase tracking-widest min-h-[100px] resize-none" 
+          placeholder="HOW CAN WE ASSIST?"
+        ></textarea>
+      </div>
+      <div className="flex flex-col gap-6">
+        <button 
+          disabled={status === "sending"}
+          className="bg-black text-white py-6 px-12 text-xs font-bold uppercase tracking-[0.4em] hover:bg-brand-red transition-all cursor-pointer disabled:opacity-50"
+        >
+          {status === "sending" ? "Sending..." : "Send Enquiry"}
+        </button>
+        {status === "sent" && <p className="text-[10px] font-bold uppercase tracking-widest text-green-600">Enquiry sent successfully.</p>}
+        {status === "error" && <p className="text-[10px] font-bold uppercase tracking-widest text-brand-red">Error sending enquiry. Please try again.</p>}
+      </div>
+    </form>
   );
 }
