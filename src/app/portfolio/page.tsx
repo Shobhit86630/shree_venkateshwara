@@ -50,7 +50,7 @@ export default function Portfolio() {
           </h1>
           <div className="flex flex-col md:flex-row justify-between items-start gap-8 border-t border-zinc-100 pt-12">
             <p className="text-[11px] font-bold uppercase tracking-[0.4em] text-brand-dark-grey max-w-sm">
-              Explore our legacy of 100+ completed projects—where architectural honesty meets modern luxury.
+              Explore our legacy of 100+ completed projects since 1999—where architectural honesty meets modern luxury.
             </p>
             <div className="flex items-center gap-6">
               <div className="h-[1px] w-12 bg-zinc-200"></div>

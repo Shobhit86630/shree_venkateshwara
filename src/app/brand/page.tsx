@@ -31,7 +31,7 @@ export default function Brand() {
           <h1 className="text-6xl md:text-[8rem] font-heading font-bold tracking-tighter uppercase leading-[0.9] mb-16">
             The Legacy <br /> of Trust
           </h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
             <div className="relative aspect-[4/3] overflow-hidden bg-brand-grey">
               {images.map((src, idx) => (
                 <div 
@@ -56,8 +56,8 @@ export default function Brand() {
               </p>
               <div className="grid grid-cols-2 gap-10 border-t border-zinc-100 pt-10">
                 <div>
-                  <span className="block text-4xl font-heading font-bold uppercase tracking-tighter mb-2">15+</span>
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">Years of Excellence</span>
+                  <span className="block text-4xl font-heading font-bold uppercase tracking-tighter mb-2">25+</span>
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">Experience (since 1999)</span>
                 </div>
                 <div>
                   <span className="block text-4xl font-heading font-bold uppercase tracking-tighter mb-2">500+</span>
@@ -91,42 +91,71 @@ export default function Brand() {
           </div>
         </section>
         <section className="px-2 md:px-5 py-32 max-w-[1400px] mx-auto border-t border-zinc-100">
-          <div className="mb-20">
-            <h2 className="text-4xl md:text-6xl font-heading font-bold tracking-tighter uppercase leading-none mb-4">
-              The Founders
-            </h2>
-            <div className="w-20 h-1 bg-brand-red"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-20">
-            <div className="group">
-              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey transition-all duration-700 mb-8">
-                <Image 
-                  src="/Sandeep Pendke.png" 
-                  alt="Sandeep Pendke" 
-                  fill
-                  className="object-cover"
-                />
+          <div className="flex flex-col gap-24">
+            {/* Header */}
+            <div className="flex flex-col md:flex-row justify-between items-baseline gap-12">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-brand-red mb-6 block">Our Leadership</span>
+                <h2 className="text-6xl md:text-[8rem] font-heading font-bold tracking-tighter uppercase leading-[0.95]">
+                  The <br /> Visionaries
+                </h2>
               </div>
-              <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-2">Sandeep Pendke</h3>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-brand-red mb-4">Founder & Managing Director</p>
-              <p className="text-[12px] font-medium uppercase tracking-widest text-brand-dark-grey leading-relaxed max-w-md">
-                A visionary in Nagpur&apos;s architectural landscape, Sandeep Pendke founded Shree Venkateshwara with a commitment to uncompromising quality and structural honesty. With over 15 years of experience, he leads the brand&apos;s mission to redefine 3BHK luxury through modern minimalist design.
-              </p>
+              <div className="max-w-sm">
+                <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-brand-dark-grey leading-loose">
+                  Driven by structural honesty and architectural integrity, our leadership team ensures that every Shree Venkateshwara project remains a benchmark of luxury in Nagpur.
+                </p>
+              </div>
             </div>
-            <div className="group">
-              <div className="relative aspect-[4/5] overflow-hidden bg-brand-grey transition-all duration-700 mb-8">
-                <Image 
-                  src="/Raakesh Singh.png" 
-                  alt="Raakesh Singh" 
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-2">Raakesh Singh</h3>
-              <p className="text-[10px] font-bold uppercase tracking-widest text-brand-red mb-4">Co-Founder & Director</p>
-              <p className="text-[12px] font-medium uppercase tracking-widest text-brand-dark-grey leading-relaxed max-w-md">
-                Raakesh Singh brings strategic depth and a customer-centric philosophy to the brand. His focus on transparency and architectural integrity ensures that every project, from K-50 to Metroflax Estet, serves as a true sanctuary for the families who call them home.
-              </p>
+
+            {/* Founders Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-40 max-w-6xl mx-auto w-full">
+              {[
+                { 
+                  name: "Sandeep Pendke", 
+                  role: "Founder & Managing Director", 
+                  img: "/Sandeep Pendke.png",
+                  bio: "A visionary with over 25 years of experience in structural engineering and real estate development."
+                },
+                { 
+                  name: "Raakesh Singh", 
+                  role: "Co-Founder & Director", 
+                  img: "/Raakesh Singh.png",
+                  bio: "Expert in project management and operations, ensuring the highest standards of construction quality."
+                }
+              ].map((founder, i) => (
+                <div key={i} className="group cursor-default relative overflow-hidden">
+                  <div className="relative aspect-[4/5] transition-all duration-700">
+                    <Image 
+                      src={founder.img} 
+                      alt={founder.name} 
+                      fill
+                      className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    />
+                    
+                    {/* Overlay Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity duration-700"></div>
+                    
+                    {/* Overlapping Text Content */}
+                    <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 flex flex-col gap-6 translate-y-12 group-hover:translate-y-0 transition-all duration-700 ease-out">
+                      <div className="flex justify-between items-end border-b border-white/10 pb-4">
+                        <h3 className="text-4xl md:text-5xl font-heading font-bold uppercase tracking-tighter text-white leading-[0.95]">
+                          {founder.name.split(' ').map((word, idx) => (
+                            <span key={idx} className="block">{word}</span>
+                          ))}
+                        </h3>
+                        <span className="text-[10px] font-bold uppercase tracking-widest text-brand-red pb-1">0{i+1}</span>
+                      </div>
+                      
+                      <div className="flex flex-col gap-4">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-white/50">{founder.role}</p>
+                        <p className="text-[11px] font-medium uppercase tracking-widest text-white/70 leading-relaxed max-w-xs opacity-0 group-hover:opacity-100 transition-all duration-700 delay-100">
+                          {founder.bio}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>

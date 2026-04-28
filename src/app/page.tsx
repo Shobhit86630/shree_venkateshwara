@@ -16,8 +16,8 @@ export default function Home() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="px-2 md:px-5 pb-16 md:pb-32 max-w-[1400px] mx-auto">
-          <div className="relative w-full aspect-[16/9] md:aspect-[16/9] overflow-hidden bg-brand-grey mb-12 md:mb-24">
+        <section className="px-2 md:px-5 pb-12 md:pb-24 max-w-[1400px] mx-auto">
+          <div className="relative w-full aspect-[16/9] md:aspect-[16/9] overflow-hidden bg-brand-grey mb-8 md:mb-16">
             <Image 
               src="/ChatGPT Image Apr 22, 2026, 01_41_11 PM.png" 
               alt="Nagpur Luxury 3BHK" 
@@ -34,17 +34,23 @@ export default function Home() {
               <p className="text-[13px] font-medium uppercase tracking-widest text-brand-dark-grey leading-relaxed">
                 Specializing in boutique 3BHK residences, Shree Venkateshwara brings architectural integrity and modern minimalist design to the heart of Nagpur.
               </p>
-              <div className="flex items-center gap-6">
-                <div className="h-[1px] w-12 bg-brand-red"></div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red">100+ Projects Completed</span>
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center gap-6">
+                  <div className="h-[1px] w-12 bg-brand-red"></div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red">100+ Projects Completed</span>
+                </div>
+                <div className="flex items-center gap-6">
+                  <div className="h-[1px] w-12 bg-zinc-200"></div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-dark-grey">Experience Since 1999</span>
+                </div>
               </div>
             </div>
           </div>
         </section>
 
         {/* Ongoing Projects */}
-        <section className="px-2 md:px-5 py-20 md:py-40 max-w-[1400px] mx-auto border-t border-zinc-100">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 md:mb-24 gap-8">
+        <section className="px-2 md:px-5 py-16 md:py-32 max-w-[1400px] mx-auto border-t border-zinc-100">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-20 gap-8">
             <div>
               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-4 block">Currently Building</span>
               <h2 className="text-4xl md:text-7xl font-heading font-bold tracking-tighter uppercase leading-[0.9]">
@@ -79,9 +85,9 @@ export default function Home() {
         </section>
 
         {/* The Govindam Series (Upcoming) */}
-        <section className="px-3 md:px-5 py-24 md:py-56 border-t border-zinc-100 bg-white">
+        <section className="px-3 md:px-5 py-16 md:py-32 border-t border-zinc-100 bg-white">
           <div className="max-w-[1400px] mx-auto">
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-20 md:mb-32 gap-12 md:gap-24">
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 md:mb-24 gap-12 md:gap-24">
               <div className="max-w-2xl">
                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-6 md:mb-8 block font-sans">Strategic Expansion</span>
                 <h2 className="text-4xl md:text-[6rem] font-heading font-bold tracking-tighter uppercase leading-[1.05] md:leading-[1] mb-10 md:mb-12">
@@ -136,15 +142,15 @@ export default function Home() {
         </section>
 
         {/* Legacy Section */}
-        <section className="px-2 md:px-5 py-32 md:py-56 border-t border-zinc-100">
+        <section className="px-2 md:px-5 py-20 md:py-36 border-t border-zinc-100">
           <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row items-center gap-16 md:gap-32">
             <div className="flex-1 order-2 md:order-1">
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-8 md:mb-10 block">Our Legacy</span>
-              <h2 className="text-5xl md:text-[7.5rem] font-heading font-bold uppercase tracking-tighter leading-[1] mb-10 md:mb-16">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-brand-red mb-8 block">Our Legacy</span>
+              <h2 className="text-5xl md:text-[7.5rem] font-heading font-bold uppercase tracking-tighter leading-[1] mb-8 md:mb-12">
                 100+ <br className="hidden md:block" /> Projects. <br className="hidden md:block" /> Zero <br className="hidden md:block" /> Compromise.
               </h2>
               <p className="text-sm font-medium uppercase tracking-[0.2em] text-brand-dark-grey max-w-md leading-loose">
-                For over a decade, Shree Venkateshwara has been synonymous with trust in Nagpur. Each of our 100+ completed projects is a testament to our commitment to 3BHK luxury and architectural excellence.
+                Since 1999, Shree Venkateshwara has been synonymous with trust in Nagpur. With over 25 years of experience and 100+ completed projects, we remain committed to 3BHK luxury and architectural excellence.
               </p>
             </div>
             <div className="flex-1 relative aspect-[4/5] w-full order-1 md:order-2 overflow-hidden mb-8 md:mb-0">
@@ -159,7 +165,7 @@ export default function Home() {
         </section>
 
         {/* Estimate Section */}
-        <section className="px-2 md:px-5 py-20 md:py-40 bg-zinc-50">
+        <section className="px-2 md:px-5 py-16 md:py-24 bg-zinc-50">
           <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24 items-center">
             <h2 className="text-4xl md:text-7xl font-heading font-bold uppercase tracking-tighter leading-[0.9]">
               Begin Your <br /> Nagpur <br /> Transition.

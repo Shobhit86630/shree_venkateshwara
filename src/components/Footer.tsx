@@ -39,7 +39,7 @@ export default function Footer() {
                 <a href="mailto:venturesshreevenkateshwara@gmail.com" className="underline hover:text-brand-red transition-colors block break-words">venturesshreevenkateshwara@gmail.com</a>
               </div>
               <div>
-                <span className="block text-[8px] text-zinc-400 mb-1">Phone</span>
+                <span className="block text-[8px] text-zinc-400 mb-1">Contact</span>
                 <span>+91 9145669964 <br /> +91 9850815881</span>
               </div>
               <div>
