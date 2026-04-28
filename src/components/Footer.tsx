@@ -1,10 +1,24 @@
+"use client";
+
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }
+};
+
 export default function Footer() {
   return (
-    <footer className="bg-white text-black px-2 md:px-5 py-20 border-t border-zinc-100">
+    <footer className="bg-white text-black px-2 md:px-5 py-20 border-t border-zinc-100 overflow-hidden">
       <div className="max-w-[1400px] mx-auto divide-y divide-zinc-100">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-16 pb-20">
           {/* Brand Section - Full width on mobile */}
-          <div className="col-span-2 md:col-span-1">
+          <motion.div 
+            {...fadeInUp}
+            className="col-span-2 md:col-span-1"
+          >
             <div className="mb-8">
               <video 
                 src="/logo.mp4" 
@@ -18,20 +32,28 @@ export default function Footer() {
             <p className="text-[10px] font-bold text-brand-dark-grey tracking-widest leading-loose uppercase max-w-[240px] md:max-w-none">
               Defining the pinnacle of <br className="hidden md:block" /> residential real estate.
             </p>
-          </div>
+          </motion.div>
           
           {/* Navigation - 1 column on mobile */}
-          <div className="col-span-1">
+          <motion.div 
+            {...fadeInUp}
+            transition={{ ...fadeInUp.transition, delay: 0.1 }}
+            className="col-span-1"
+          >
             <h5 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 text-zinc-400">Navigation</h5>
             <div className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">
               <a href="/portfolio" className="hover:text-black transition-colors">Projects</a>
               <a href="/concierge" className="hover:text-black transition-colors">Services</a>
               <a href="/brand" className="hover:text-black transition-colors">About</a>
             </div>
-          </div>
+          </motion.div>
           
           {/* Contact - 1 column on mobile */}
-          <div className="col-span-1">
+          <motion.div 
+            {...fadeInUp}
+            transition={{ ...fadeInUp.transition, delay: 0.2 }}
+            className="col-span-1"
+          >
             <h5 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 text-zinc-400">Contact</h5>
             <div className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey leading-relaxed">
               <div>
@@ -47,28 +69,37 @@ export default function Footer() {
                 <p>15, 2nd Floor, NKY Tower, Ajni Square, Wardha Road, Nagpur - 440015</p>
               </div>
             </div>
-          </div>
+          </motion.div>
           
           {/* Legal - Full width or auto span */}
-          <div className="col-span-2 md:col-span-1">
+          <motion.div 
+            {...fadeInUp}
+            transition={{ ...fadeInUp.transition, delay: 0.3 }}
+            className="col-span-2 md:col-span-1"
+          >
             <h5 className="text-[10px] font-bold uppercase tracking-[0.3em] mb-6 md:mb-8 text-zinc-400">Legal</h5>
             <div className="flex flex-col gap-4 text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">
               <a href="/privacy" className="hover:text-black transition-colors">Privacy Policy</a>
               <a href="/terms" className="hover:text-black transition-colors">Terms of Use</a>
             </div>
-          </div>
+          </motion.div>
         </div>
         
         {/* Bottom Bar */}
-        <div className="pt-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-10">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="pt-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-10"
+        >
           <div className="text-[9px] uppercase tracking-[0.4em] font-bold text-brand-dark-grey leading-relaxed">
             © 2024 Shree Venkateshwara <br className="md:hidden" /> Real Estate • Nagpur
           </div>
           <div className="flex flex-wrap gap-x-8 gap-y-4 text-[9px] uppercase tracking-[0.3em] font-bold">
             <a href="#" className="hover:text-brand-red transition-colors">Instagram</a>
-           
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

@@ -4,6 +4,22 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
+const fadeInUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }
+};
+
+const stagger = {
+  whileInView: {
+    transition: {
+      staggerChildren: 0.1
+    }
+  }
+};
 
 export default function Brand() {
   const images = [
@@ -28,11 +44,20 @@ export default function Brand() {
       <Navbar />
       <main className="flex-1">
         <section className="px-2 md:px-5 py-20 max-w-[1400px] mx-auto">
-          <h1 className="text-6xl md:text-[8rem] font-heading font-bold tracking-tighter uppercase leading-[0.9] mb-16">
+          <motion.h1 
+            {...fadeInUp}
+            className="text-6xl md:text-[8rem] font-heading font-bold tracking-tighter uppercase leading-[0.9] mb-16"
+          >
             The Legacy <br /> of Trust
-          </h1>
+          </motion.h1>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-20 items-start">
-            <div className="relative aspect-[4/3] overflow-hidden bg-brand-grey">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
+              className="relative aspect-[4/3] overflow-hidden bg-brand-grey"
+            >
               {images.map((src, idx) => (
                 <div 
                   key={src}
@@ -43,18 +68,34 @@ export default function Brand() {
                     alt={`SV Branded Architecture ${idx + 1}`} 
                     fill
                     className="object-cover"
+                    priority={idx === 0}
                   />
                 </div>
               ))}
-            </div>
-            <div className="flex flex-col gap-12">
-              <h2 className="text-4xl md:text-6xl font-heading font-bold uppercase tracking-tighter leading-none">
+            </motion.div>
+            <motion.div 
+              variants={stagger}
+              initial="initial"
+              whileInView="whileInView"
+              viewport={{ once: true }}
+              className="flex flex-col gap-12"
+            >
+              <motion.h2 
+                variants={fadeInUp}
+                className="text-4xl md:text-6xl font-heading font-bold uppercase tracking-tighter leading-none"
+              >
                 Born From Vision. <br /> Driven By Integrity.
-              </h2>
-              <p className="text-sm font-medium uppercase tracking-widest text-brand-dark-grey leading-loose">
+              </motion.h2>
+              <motion.p 
+                variants={fadeInUp}
+                className="text-sm font-medium uppercase tracking-widest text-brand-dark-grey leading-loose"
+              >
                 Shree Venkateshwara was founded with a singular purpose: to redefine luxury residential living in India. We believe that a home is more than just square footage—it is an architectural statement and a sanctuary for the soul.
-              </p>
-              <div className="grid grid-cols-2 gap-10 border-t border-zinc-100 pt-10">
+              </motion.p>
+              <motion.div 
+                variants={fadeInUp}
+                className="grid grid-cols-2 gap-10 border-t border-zinc-100 pt-10"
+              >
                 <div>
                   <span className="block text-4xl font-heading font-bold uppercase tracking-tighter mb-2">25+</span>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">Experience (since 1999)</span>
@@ -63,37 +104,50 @@ export default function Brand() {
                   <span className="block text-4xl font-heading font-bold uppercase tracking-tighter mb-2">500+</span>
                   <span className="text-[10px] font-bold uppercase tracking-widest text-brand-dark-grey">Families Served</span>
                 </div>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
 
         <section className="px-2 md:px-5 py-32 bg-zinc-50">
-          <div className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16">
-            <div className="p-10 bg-white border border-zinc-100">
+          <motion.div 
+            variants={stagger}
+            initial="initial"
+            whileInView="whileInView"
+            viewport={{ once: true }}
+            className="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-16"
+          >
+            <motion.div variants={fadeInUp} className="p-10 bg-white border border-zinc-100">
               <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-6">Innovation</h3>
               <p className="text-[11px] font-bold uppercase tracking-widest text-brand-dark-grey leading-relaxed">
                 We push the boundaries of modern architecture, integrating smart technology with timeless minimalist design.
               </p>
-            </div>
-            <div className="p-10 bg-white border border-zinc-100">
+            </motion.div>
+            <motion.div variants={fadeInUp} className="p-10 bg-white border border-zinc-100">
               <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-6">Transparency</h3>
               <p className="text-[11px] font-bold uppercase tracking-widest text-brand-dark-grey leading-relaxed">
                 Honesty is our foundation. Every project is built on a legacy of clear communication and ethical practices.
               </p>
-            </div>
-            <div className="p-10 bg-white border border-zinc-100">
+            </motion.div>
+            <motion.div variants={fadeInUp} className="p-10 bg-white border border-zinc-100">
               <h3 className="text-3xl font-heading font-bold uppercase tracking-tighter mb-6">Quality</h3>
               <p className="text-[11px] font-bold uppercase tracking-widest text-brand-dark-grey leading-relaxed">
                 We use the finest materials and partner with world-renowned architects to ensure every SV home is a masterpiece.
               </p>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
+
         <section className="px-2 md:px-5 py-32 max-w-[1400px] mx-auto border-t border-zinc-100">
           <div className="flex flex-col gap-24">
             {/* Header */}
-            <div className="flex flex-col md:flex-row justify-between items-baseline gap-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.215, 0.61, 0.355, 1] }}
+              className="flex flex-col md:flex-row justify-between items-baseline gap-12"
+            >
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-[0.5em] text-brand-red mb-6 block">Our Leadership</span>
                 <h2 className="text-6xl md:text-[8rem] font-heading font-bold tracking-tighter uppercase leading-[0.95]">
@@ -105,7 +159,7 @@ export default function Brand() {
                   Driven by structural honesty and architectural integrity, our leadership team ensures that every Shree Venkateshwara project remains a benchmark of luxury in Nagpur.
                 </p>
               </div>
-            </div>
+            </motion.div>
 
             {/* Founders Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-24 md:gap-40 max-w-6xl mx-auto w-full">
@@ -123,7 +177,14 @@ export default function Brand() {
                   bio: "Expert in project management and operations, ensuring the highest standards of construction quality."
                 }
               ].map((founder, i) => (
-                <div key={i} className="group cursor-default relative overflow-hidden">
+                <motion.div 
+                  key={i} 
+                  initial={{ opacity: 0, y: 60 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1, delay: i * 0.2, ease: [0.215, 0.61, 0.355, 1] }}
+                  className="group cursor-default relative overflow-hidden"
+                >
                   <div className="relative aspect-[4/5] transition-all duration-700">
                     <Image 
                       src={founder.img} 
@@ -138,10 +199,8 @@ export default function Brand() {
                     {/* Overlapping Text Content */}
                     <div className="absolute inset-x-0 bottom-0 p-8 md:p-12 flex flex-col gap-6 translate-y-12 group-hover:translate-y-0 transition-all duration-700 ease-out">
                       <div className="flex justify-between items-end border-b border-white/10 pb-4">
-                        <h3 className="text-4xl md:text-5xl font-heading font-bold uppercase tracking-tighter text-white leading-[0.95]">
-                          {founder.name.split(' ').map((word, idx) => (
-                            <span key={idx} className="block">{word}</span>
-                          ))}
+                        <h3 className="text-4xl md:text-5xl font-heading font-bold uppercase tracking-tighter text-white leading-[0.95] whitespace-nowrap">
+                          {founder.name}
                         </h3>
                         <span className="text-[10px] font-bold uppercase tracking-widest text-brand-red pb-1">0{i+1}</span>
                       </div>
@@ -154,7 +213,7 @@ export default function Brand() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
